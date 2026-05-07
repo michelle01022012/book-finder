@@ -6,10 +6,10 @@ import '../styles/BookDetails.css';
 const BookDetails = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
-  const API_KEY = import.meta.env.REACT_APP_GOOGLE_BOOKS_KEY;
+  const API_KEY = process.env.REACT_APP_GOOGLE_BOOKS_KEY;
 
   useEffect(() => {
-    axios.get(`https://googleapis.com{id}?key=${API_KEY}`)
+   axios.get(`https://www.googleapis.com/books/v1/volumes/${id}?key=${API_KEY}`)
       .then(res => setBook(res.data));
   }, [id]);
 
