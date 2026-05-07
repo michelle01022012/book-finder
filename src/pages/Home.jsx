@@ -6,10 +6,10 @@ import '../styles/Home.css';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
-  const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_KEY;
+  const API_KEY = import.meta.env.REACT_APP_GOOGLE_BOOKS_KEY;
 
   const fetchBooks = async (query = 'fast') => {
-    const res = await axios.get(`https://googleapis.com{query}&maxResults=6&key=${API_KEY}`);
+    const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=6&key=${API_KEY}`);
     setBooks(res.data.items || []);
   };
 
