@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import BookDetails from './pages/BookDetails';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import './App.css';
+import './styles/Global.css';
 
 function App() {
   return (

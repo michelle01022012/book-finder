@@ -1,0 +1,72 @@
+/* src/styles/Home.css */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-container {
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 10px;
+}
+
+.search-container input {
+  padding: 12px 20px;
+  width: 300px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-container input:focus {
+  border-color: var(--accent-color);
+}
+
+.search-button {
+  background: var(--accent-color);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  width: 100%;
+}
+
+/* BookCard Styles */
+.book-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+  cursor: pointer;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.book-card:hover {
+  transform: translateY(-10px);
+}
+
+.book-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.book-card h3 {
+  padding: 0 10px;
+  font-size: 1.1rem;
+}
