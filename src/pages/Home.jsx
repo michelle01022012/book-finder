@@ -6,7 +6,8 @@ import '../styles/Home.css';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
-  const API_KEY = process.env.REACT_APP_GOOGLE_BOOKS_KEY;
+  //const API_KEY = process.env.REACT_APP_GOOGLE_BOOKS_KEY;
+  const API_KEY = "AIzaSyBHVv0Dtl5ZR5lP5sAa8NK4beGfzQyze4s";
 
   const fetchBooks = async (query = 'fast') => {
     const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=6&key=${API_KEY}`);
