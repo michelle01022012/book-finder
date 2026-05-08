@@ -4,6 +4,7 @@ import BookDetails from './pages/BookDetails';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/Global.css';
+import About from './pages/About';
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/book/:id" element={<BookDetails />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/book/:id" element={<BookDetails />} />
           </Routes>
         </main>
         <Footer />
