@@ -9,9 +9,9 @@ const BookDetails = () => {
   const API_KEY = process.env.REACT_APP_GOOGLE_BOOKS_KEY;
 
   useEffect(() => {
-   axios.get(`https://www.googleapis.com/books/v1/volumes/${id}?key=${API_KEY}`)
-      .then(res => setBook(res.data));
-  }, [id]);
+  axios.get(`https://www.googleapis.com/books/v1/volumes/${id}?key=${API_KEY}`)
+    .then(res => setBook(res.data));
+  }, [id, API_KEY]);
 
   if (!book) return <div>Loading...</div>;
 

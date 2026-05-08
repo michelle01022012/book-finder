@@ -14,7 +14,9 @@ const Home = () => {
     setBooks(res.data.items || []);
   };
 
-  useEffect(() => { fetchBooks(); }, []);
+  useEffect(() => { 
+     fetchBooks(); 
+  }, [fetchBooks]);
 
   return (
     <div className="home-page">
