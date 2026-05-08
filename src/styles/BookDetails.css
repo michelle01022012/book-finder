@@ -54,4 +54,29 @@
     align-items: center;
     padding: 20px;
    }
+   /* Tablet Styles: 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .details-page {
+    flex-direction: column; /* Stack image on top of content if space is tight */
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
   }
+
+  .details-page img {
+    max-width: 300px; /* Resize image for smaller screen */
+    margin-bottom: 2rem;
+  }
+
+  .info {
+    width: 90%; /* Increase text width for better readability on tablets */
+    margin: 0 auto;
+  }
+
+  /* Adjust grid for Home page on tablets */
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns instead of 3 */
+    gap: 15px;
+  }
+ }
+}
