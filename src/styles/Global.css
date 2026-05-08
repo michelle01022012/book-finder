@@ -7,16 +7,16 @@
 }
 
 .logo {
-  font-size: 2rem;       
-  font-weight: 700;     
-  letter-spacing: -1px; 
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
   color: var(--white);
   cursor: pointer;
 }
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Roboto, sans-serif;
+  font-family: "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
@@ -41,7 +41,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .nav-links {
   display: flex;
@@ -71,6 +71,7 @@ header {
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
+  z-index: 1000;
 }
 
 .burger span {
@@ -79,25 +80,60 @@ header {
   background-color: white;
 }
 
+.mobile-nav {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .burger { display: flex; }
-  
-  nav { position: relative; }
-  
-  .nav-links { 
-    display: none; 
+  .burger {
+    display: flex;
   }
-  
-  .nav-open .nav-links { 
-    display: flex; 
-    flex-direction: column; 
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: block;
     position: absolute;
-    top: 100%;
+    top: 50px;
     right: 0;
+    width: 200px;
+    z-index: 999;
+  }
+
+  .mobile-nav.nav-closed {
+    display: none;
+  }
+
+  .mobile-nav.nav-open .nav-links {
+    display: flex;
+    flex-direction: column;
     background: var(--primary-color);
-    padding: 10px 20px;
+    padding: 20px;
     border-radius: 0 0 8px 8px;
-    min-width: 120px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 15px;
+  }
+
+  .mobile-nav.nav-open .nav-links li {
+    width: 100%;
+  }
+
+  .mobile-nav.nav-open .nav-links a {
+    display: block;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+
+  .mobile-nav.nav-open .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-nav.nav-open .nav-links a.active {
+    background: rgba(52, 152, 219, 0.2);
+    border-bottom: none;
   }
 }
 
