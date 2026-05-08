@@ -68,6 +68,24 @@ header {
   border-bottom: 2px solid var(--accent-color);
   color: var(--accent-color);
 }
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.burger span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .burger { display: flex; }
+  .nav-links { display: none; }
+  .nav-open .nav-links { display: flex; flex-direction: column; padding: 10px 0; }
+}
 
 .about-container {
   padding: 40px;
