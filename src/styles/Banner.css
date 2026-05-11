@@ -1,0 +1,24 @@
+.banner-container {
+  width: 100%;
+  overflow: hidden; /* Hides the text that goes off-screen */
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  white-space: nowrap; /* Keeps text in one long line */
+  border-bottom: 2px solid #555; /* Optional: separates it from the footer */
+}
+
+.banner-content {
+  display: inline-block;
+  padding-left: 100%; /* Starts the animation off-screen to the right */
+  animation: scroll-left 15s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.banner-container:hover .banner-content {
+  animation-play-state: paused;
+}

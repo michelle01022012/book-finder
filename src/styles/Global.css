@@ -144,6 +144,15 @@ header {
   line-height: 1.6;
 }
 
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; 
+}
 footer {
   background: var(--primary-color);
   color: var(--white);
