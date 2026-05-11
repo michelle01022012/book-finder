@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/BookDetails.css';
+import Banner from "../components/Banner";
+import "../styles/Banner.css";
 
 const BookDetails = () => {
   const { id } = useParams();

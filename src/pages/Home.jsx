@@ -36,7 +36,7 @@ const Home = () => {
   );
 
   const fetchBooks = useCallback(
-    async (query = "fast") => {
+    async (query) => {
       try {
         const res = await axios.get(
           `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=6&key=${API_KEY}`,
@@ -50,13 +50,7 @@ const Home = () => {
     },
     [API_KEY],
   );
-
-  useEffect(() => {
-    fetchBooks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Update sortedBooks whenever books or sortBy changes
+ 
   useEffect(() => {
     setSortedBooks(sortBooks(books, sortBy));
   }, [books, sortBy, sortBooks]);
