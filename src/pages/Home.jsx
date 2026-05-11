@@ -3,6 +3,8 @@ import axios from "axios";
 import BookCard from "../components/BookCard";
 import SearchBar from "../components/SearchBar";
 import "../styles/Home.css";
+import Banner from "../components/Banner";
+import "../styles/Banner.css";
 
 const API_KEY = process.env.REACT_APP_GOOGLE_BOOKS_KEY;
 
@@ -57,6 +59,7 @@ const Home = () => {
 
   return (
     <div className="home-page">
+     <Banner />
       <SearchBar onSearch={fetchBooks} onSort={handleSort} />
       <div className="book-grid">
         {sortedBooks.map((book) => (
