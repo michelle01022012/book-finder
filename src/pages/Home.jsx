@@ -18,7 +18,6 @@ const Home = () => {
     setSearchParams({ q: term });
   };
 
-  // 1. Define sortBooks first
   const sortBooks = useCallback((booksToSort, sortOption) => {
     const sorted = [...booksToSort];
     switch (sortOption) {
@@ -31,8 +30,7 @@ const Home = () => {
     }
   }, []);
 
-  // 2. Define handleSort after sortBooks
-  const handleSort = useCallback(
+   const handleSort = useCallback(
     (sortOption) => {
       setSortBy(sortOption);
       setSortedBooks(sortBooks(books, sortOption));
@@ -40,8 +38,7 @@ const Home = () => {
     [books, sortBooks],
   );
 
-  // 3. Define fetchBooks before the useEffect that triggers it
-  const fetchBooks = useCallback(
+   const fetchBooks = useCallback(
     async (query) => {
       try {
         const res = await axios.get('https://www.googleapis.com/books/v1/volumes', {
@@ -53,18 +50,16 @@ const Home = () => {
         setBooks([]);
       }
     },
-    [] // Removed API_KEY from dependencies as it is an external constant
+    [] 
   );
 
-  // 4. Hook that calls fetchBooks now sits below the definition
-  useEffect(() => {
+   useEffect(() => {
     if (query) {
       fetchBooks(query);
     }
   }, [query, fetchBooks]);
 
-  // 5. Hook that synchronizes sorting
-  useEffect(() => {
+   useEffect(() => {
     setSortedBooks(sortBooks(books, sortBy));
   }, [books, sortBy, sortBooks]);
 
