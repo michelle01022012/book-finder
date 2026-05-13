@@ -12,6 +12,7 @@ const Home = () => {
   const [sortedBooks, setSortedBooks] = useState([]);
   const [sortBy, setSortBy] = useState("relevance");
   const [searchParams, setSearchParams] = useSearchParams();
+  
   const query = searchParams.get("q");
 
   const handleSearch = (term) => {
@@ -30,36 +31,39 @@ const Home = () => {
     }
   }, []);
 
-   const handleSort = useCallback(
-    (sortOption) => {
-      setSortBy(sortOption);
-      setSortedBooks(sortBooks(books, sortOption));
-    },
-    [books, sortBooks],
-  );
+  const handleSort = useCallback((sortOption) => {
+    setSortBy(sortOption);
+    setSortedBooks(sortBooks(books, sortOption));
+  }, [books, sortBooks]);
 
-   const fetchBooks = useCallback(
-    async (query) => {
-      try {
-        const res = await axios.get('https://www.googleapis.com/books/v1/volumes', {
-          params: { q: query, maxResults: 6, key: API_KEY }
-        });
-        setBooks(res.data.items || []);
-      } catch (error) {
-        console.error("Error fetching books:", error);
-        setBooks([]);
-      }
-    },
-    [] 
-  );
+  const fetchBooks = useCallback(async (searchQuery) => {
+    try {
+      const res = await axios.get('https://www.googleapis.com/books/v1/volumes', {
+        params: { q: searchQuery, maxResults: 6, key: API_KEY }
+      });
+      const items = res.data.items || [];
+      setBooks(items);
+      sessionStorage.setItem("last_search_query", searchQuery);
+      sessionStorage.setItem("last_search_results", JSON.stringify(items));
+    } catch (error) {
+      console.error("Error fetching books:", error);
+      setBooks([]);
+    }
+  }, []);
 
    useEffect(() => {
+    const savedQuery = sessionStorage.getItem("last_search_query");
+    const savedResults = sessionStorage.getItem("last_search_results");
+
     if (query) {
       fetchBooks(query);
+    } else if (savedQuery && savedResults) {
+      setSearchParams({ q: savedQuery }, { replace: true });
+      setBooks(JSON.parse(savedResults));
     }
-  }, [query, fetchBooks]);
+  }, [query, fetchBooks, setSearchParams]);
 
-   useEffect(() => {
+  useEffect(() => {
     setSortedBooks(sortBooks(books, sortBy));
   }, [books, sortBy, sortBooks]);
 
