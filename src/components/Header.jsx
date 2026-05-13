@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/Global.css";
+import { FaBookOpen } from "react-icons/fa";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,9 +9,9 @@ const Header = () => {
   return (
     <>
       <header>
-      <NavLink to="/" className="logo">
-           BookFinder
-      </NavLink>
+     <NavLink to="/" className="logo">
+       BookFinder <FaBookOpen />
+     </NavLink>
         <div className="burger" onClick={() => setIsOpen(!isOpen)}>
           <span></span>
           <span></span>
