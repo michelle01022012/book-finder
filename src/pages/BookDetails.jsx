@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/BookDetails.css';
-import Banner from "../components/Banner";
 import "../styles/Banner.css";
 
 const BookDetails = () => {
@@ -18,6 +17,9 @@ const BookDetails = () => {
   if (!book) return <div>Loading...</div>;
 
   const { volumeInfo } = book;
+  const cleanDescription = volumeInfo.description
+  ? volumeInfo.description.replace(/<[^>]*>/g, "")
+  : "No description available.";
   const rating = volumeInfo.averageRating || 0;
 
   return (
@@ -26,7 +28,7 @@ const BookDetails = () => {
       <h1>{volumeInfo.title}</h1>
       <div className="stars">{'★'.repeat(Math.floor(rating)) + '☆'.repeat(5 - Math.floor(rating))}</div>
       <p>Cost: {book.saleInfo?.listPrice?.amount || 'N/A'} {book.saleInfo?.listPrice?.currencyCode}</p>
-      <p>{volumeInfo.description}</p>
+      <p>{cleanDescription}</p>
     </div>
   );
 };

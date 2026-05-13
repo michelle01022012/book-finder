@@ -8,7 +8,9 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className="logo">BookFinder</div>
+      <NavLink to="/" className="logo">
+           BookFinder
+      </NavLink>
         <div className="burger" onClick={() => setIsOpen(!isOpen)}>
           <span></span>
           <span></span>
