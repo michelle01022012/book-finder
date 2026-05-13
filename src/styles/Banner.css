@@ -1,8 +1,8 @@
 .banner-container {
   width: 100%;
   overflow: hidden; 
-  background-color: #333;
-  color: white;
+  background: var(--primary-color);
+  color: var(--white);
   padding: 10px 0;
   white-space: nowrap; 
   border-bottom: 2px solid #555; 

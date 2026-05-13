@@ -3,8 +3,6 @@ import axios from "axios";
 import BookCard from "../components/BookCard";
 import SearchBar from "../components/SearchBar";
 import "../styles/Home.css";
-import Banner from "../components/Banner";
-import "../styles/Banner.css";
 
 const API_KEY = process.env.REACT_APP_GOOGLE_BOOKS_KEY;
 
@@ -12,6 +10,15 @@ const Home = () => {
   const [books, setBooks] = useState([]);
   const [sortedBooks, setSortedBooks] = useState([]);
   const [sortBy, setSortBy] = useState("relevance");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("q");
+
+  const fetchBooks = useCallback(...);
+
+  const handleSearch = (term) => {
+    setSearchParams({ q: term });
+  };
 
   const sortBooks = useCallback((booksToSort, sortOption) => {
     const sorted = [...booksToSort];
@@ -59,8 +66,7 @@ const Home = () => {
 
   return (
     <div className="home-page">
-     <Banner />
-      <SearchBar onSearch={fetchBooks} onSort={handleSort} />
+       <SearchBar onSearch={handleSearch} onSort={handleSort} />
       <div className="book-grid">
         {sortedBooks.map((book) => (
           <BookCard key={book.id} book={book} />

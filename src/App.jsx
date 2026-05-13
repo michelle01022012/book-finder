@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './styles/Banner.css';
 import Home from './pages/Home';
 import BookDetails from './pages/BookDetails';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/Global.css';
 import About from './pages/About';
+import Banner from './components/Banner';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
               <Route path="/book/:id" element={<BookDetails />} />
           </Routes>
         </main>
+        <Banner />
         <Footer />
       </div>
     </Router>
